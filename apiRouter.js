@@ -5,6 +5,7 @@ var MensualReport=require('./Mensual_Report_BAAF_Controller/BAAF');
 var SearchData= require ('./SearchController/search');
 var GetJsonData=require('./GetjsonController/getJson');
 var editJsonData=require('./ModificationJsonController/modif');
+var deleteJsonData=require('./ModificationJsonController/modif');
 
  exports.router=(function(){
     var apiRouter = express.Router();
@@ -14,7 +15,8 @@ var editJsonData=require('./ModificationJsonController/modif');
      apiRouter.route('/mensualReport').post(MensualReport.mensualReport);
      apiRouter.route('/search').post(SearchData.search);
      apiRouter.route('/getJson').get(GetJsonData.getJson);
-     apiRouter.route('/editJson').get(editJsonData.editJson);
+     apiRouter.route('/editJson').post(editJsonData.editJson);
+     apiRouter.route('/deleteJson').post(deleteJsonData.deleteJson);
 
     return apiRouter;
  })();
