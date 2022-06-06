@@ -1,10 +1,8 @@
-const { json } = require('body-parser');
 const fs = require('fs');
-const { finished } = require('stream');
 const mensualModel=require("../models/mensualReportModel");
 
 const mensualReport = async (req,res) => {
-
+    const id=0;
     const {
         lieu,
         produit,
@@ -12,41 +10,7 @@ const mensualReport = async (req,res) => {
         valeurCible,
         pourcentageRealisation
     }=req.body
-
-    /*try{
-        const newReportMensual= await mensualModel.create({
-            BAAF:
-                { 
-                //lieu,
-
-                produit,
-
-                 realisation,
-                              
-                valeurCible ,
-        
-                pourcentageRealisation,
-                             
-                }
-               
-            
-        })
-        console.log(req.body);
-
-        return res.status(200).json({newReportMensual});
-        
-    }catch(error){
-        return res.status(404).json({'erreur':error.message});
-    }*/
-
-    var BAAF={
-        "produit":produit,
-        "realisation":realisation,
-        "valeurCible":valeurCible,
-        "pourcentageRealisation":pourcentageRealisation
-   };
-  
-    try{
+ try{
         
         const finished = (error) => {
             if (error){
@@ -55,15 +19,25 @@ const mensualReport = async (req,res) => {
 
             }
         }
-        const saveData=(report)=>{
-           fs.readFile('report.json',"utf-8",(err,data)=>{
+        const saveData=( )=>{
+
+            var BAAF={
+                "id":id,
+                "produit":produit,
+                "realisation":realisation,
+                "valeurCible":valeurCible,
+                "pourcentageRealisation":pourcentageRealisation
+           }
+            
+            fs.readFile('report.json',"utf-8",(err,data)=>{
                   var json=JSON.parse(data);
-                  json.push(report);
+                  BAAF.id=(json.length)+1;
+                  json.push(BAAF);
                   fs.writeFileSync('report.json',JSON.stringify(json),finished);
             });
             
           }
-        return res.json(JSON.stringify(saveData(BAAF)));
+        return res.json(JSON.stringify(saveData()));
         
 
     }catch(error){

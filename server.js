@@ -1,8 +1,9 @@
 const express = require ("express");
 const mongoose = require ("mongoose");
 const app = express();
+//const http=require('http').Server(app);
+//const io= require("socket.io")(http);
 const bodyParser = require("body-parser");
-const Jwt = require("jsonwebtoken");
 var apiRouter = require("./apiRouter").router;
 const dbConfig = require('./models/dbConfig');
 
@@ -10,6 +11,12 @@ const dbConfig = require('./models/dbConfig');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
+/*io.on("connection",function(socket){
+      console.log("connected");
+      socket.on('getJson',function(data){
+          console.log(data);
+      })
+});*/
 
 
 // Fix CORS errors through response headers
@@ -48,5 +55,5 @@ mongoose.connect(dbConfig.db,{
     })
 });*/
 
-app.use('/api/',apiRouter)
+app.use('/api/',apiRouter);
 app.listen(8080,console.log('Server connected'));

@@ -6,25 +6,25 @@ const mensualReportSchema = new Schema({
     
     BAAF:
         { 
-             lieu:{
+            /* lieu:{
                 type:String,
                 required:true,
-            },
+            },*/
             produit:{
                 type:String,
                 required:true
             },
              realisation:{
-                type:Number,
+                type:String,
                 required:true
             },
             valeurCible:{
-                type:Number,
+                type:String,
                 required:true
             },
 
             pourcentageRealisation:{
-                type:Number,
+                type:String,
                  required:true
             },
             date:{
