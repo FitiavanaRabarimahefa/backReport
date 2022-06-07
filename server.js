@@ -1,23 +1,14 @@
 const express = require ("express");
 const mongoose = require ("mongoose");
 const app = express();
-//const http=require('http').Server(app);
-//const io= require("socket.io")(http);
+const socket=require("socket.io");
+
 const bodyParser = require("body-parser");
+const fs=require('fs');
 var apiRouter = require("./apiRouter").router;
 const dbConfig = require('./models/dbConfig');
-
-
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-
-/*io.on("connection",function(socket){
-      console.log("connected");
-      socket.on('getJson',function(data){
-          console.log(data);
-      })
-});*/
-
 
 // Fix CORS errors through response headers
 app.use((req, res, next) => {
@@ -56,4 +47,20 @@ mongoose.connect(dbConfig.db,{
 });*/
 
 app.use('/api/',apiRouter);
-app.listen(8080,console.log('Server connected'));
+const server=app.listen(8080,console.log('Server connected'));
+const io=socket(server,{
+    cors: {
+        origin: '*',
+      }
+});
+io.on("connection",function(socket){
+      console.log("connected");
+     const json= fs.readFile('report.json',"utf-8",(err,data)=>{
+        const tabJson = JSON.stringify(data,null,3);
+        var jsonParse=JSON.parse(tabJson);
+        socket.emit('data1',jsonParse,(response)=>{
+          return response;
+        })
+
+    })
+});
