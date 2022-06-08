@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt")
 const UserRegister = require ("../models/registerModel");
 
 const registration = async  (req,res) => {
-    const {IM,Password}=req.body;
+    const {IM,Mail,Region,Password}=req.body;
       
      //console.log(req.body);
 
@@ -18,6 +18,8 @@ const registration = async  (req,res) => {
 
               const newUser = await UserRegister.create({
                "IM":IM,
+               "Mail":Mail,
+               "Region":Region,
                "Password":hashPassword,
               }) 
                    

@@ -7,7 +7,8 @@ var GetJsonData=require('./GetjsonController/getJson');
 var editJsonData=require('./ModificationJsonController/modif');
 var deleteJsonData=require('./ModificationJsonController/modif');
 var Save_Report_To_Mongo=require('./Save_Report_Mongo_Controller/Save_Report');
-
+var send_email=require('./Send_Mail_Controller/send_Mail');
+var getListRegister=require('./Get_Register_Controller/Get_Register')
  exports.router=(function(){
     var apiRouter = express.Router();
 
@@ -19,6 +20,8 @@ var Save_Report_To_Mongo=require('./Save_Report_Mongo_Controller/Save_Report');
      apiRouter.route('/editJson').post(editJsonData.editJson);
      apiRouter.route('/deleteJson').post(deleteJsonData.deleteJson);
      apiRouter.route('/saveReport').post(Save_Report_To_Mongo.Save_Report);
+     apiRouter.route('/sendEmail').post(send_email.sendMail)
+     apiRouter.route('/getRegister').get(getListRegister.getRegisterList)
 
     return apiRouter;
  })();

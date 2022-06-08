@@ -40,7 +40,7 @@ const deleteJson= async(req,res)=>{
        const json=JSON.parse(data);
        const indexJson=json.indexOf(idNumber);
        console.log(indexJson);
-       //json.splice((idNumber-1),1);
+      // json.splice((idNumber-1),1);
        delete json[idNumber-1];
        
        fs.writeFileSync('report.json',JSON.stringify(json),finished);

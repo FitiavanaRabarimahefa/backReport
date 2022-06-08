@@ -22,7 +22,11 @@ const login = async (req,res) => {
                      privateKey,
                      {algorithm:"HS256"}
                  )
-                return res.json({'token':token});
+                return res.json({
+                     "success":"Succes de votre authentification",
+                     "token":token,
+                     "Region":getUser.Region
+                });
              } 
             
         }  

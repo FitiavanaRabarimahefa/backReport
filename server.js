@@ -7,6 +7,24 @@ const bodyParser = require("body-parser");
 const fs=require('fs');
 var apiRouter = require("./apiRouter").router;
 const dbConfig = require('./models/dbConfig');
+
+const server=app.listen(8080,console.log('Server connected'));
+const io=socket(server,{
+    cors: {
+        origin: '*',
+      }
+});
+io.on("connection",function(socket){
+      console.log("connected");
+     const json= fs.readFile('report.json',"utf-8",(err,data)=>{
+        const tabJson = JSON.stringify(data,null,3);
+        var jsonParse=JSON.parse(tabJson);
+        socket.emit('data1',jsonParse,(response)=>{
+          return response;
+        })
+
+    })
+});
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -47,20 +65,20 @@ mongoose.connect(dbConfig.db,{
 });*/
 
 app.use('/api/',apiRouter);
-const server=app.listen(8080,console.log('Server connected'));
-const io=socket(server,{
-    cors: {
-        origin: '*',
-      }
-});
-io.on("connection",function(socket){
-      console.log("connected");
-     const json= fs.readFile('report.json',"utf-8",(err,data)=>{
-        const tabJson = JSON.stringify(data,null,3);
-        var jsonParse=JSON.parse(tabJson);
-        socket.emit('data1',jsonParse,(response)=>{
-          return response;
-        })
+// const server=app.listen(8080,console.log('Server connected'));
+// const io=socket(server,{
+//     cors: {
+//         origin: '*',
+//       }
+// });
+// io.on("connection",function(socket){
+//       console.log("connected");
+//      const json= fs.readFile('report.json',"utf-8",(err,data)=>{
+//         const tabJson = JSON.stringify(data,null,3);
+//         var jsonParse=JSON.parse(tabJson);
+//         socket.emit('data1',jsonParse,(response)=>{
+//           return response;
+//         })
 
-    })
-});
+//     })
+// });

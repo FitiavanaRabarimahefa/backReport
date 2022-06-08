@@ -6,10 +6,23 @@ const registerSchema = new Schema({
         type:Number,
         required:true,
     },
+    Mail:{
+         type:String,
+         required:true,
+    },
+    Region:{
+          type:String,
+          required:true
+    },
     Password:{
         type:String,
         required:true
+    },
+    Validation:{
+        type:Boolean,
+        default:false
     }
+
 })
 module.exports=mongoose.model('Register',registerSchema);
 
