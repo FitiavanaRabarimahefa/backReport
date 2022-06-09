@@ -7,11 +7,11 @@ const registration = async  (req,res) => {
      //console.log(req.body);
 
 
-     if(IM =='' || Password =='') return res.json({'error':'void value'})
+     if(IM =='' || Password =='') return res.json({'error':'Votre champs est vide'})
      
           const duplicate = await UserRegister.findOne({IM}).exec();
           //console.log(duplicate);
-          if(duplicate) return  res.json({'errorDuplicate':'user dupicate'}) 
+          if(duplicate) return  res.json({'error':'identifiant dupliqué dans la base de donnée'}) 
           
           try{
               const hashPassword =  await bcrypt.hash(Password,10);
@@ -24,7 +24,7 @@ const registration = async  (req,res) => {
               }) 
                    
               console.log(newUser);
-               res.json({'succes': `user created ${IM}`})
+               res.json({'success': 'Inscription avec succès'})
               
           }catch(err){
                console.log(err.message);
