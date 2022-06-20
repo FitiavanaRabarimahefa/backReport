@@ -35,15 +35,16 @@ const deleteJson= async(req,res)=>{
         }}
       
       const {id}=req.body;
-      fs.readFile('report.json',"utf-8",(err,data)=>{
-       const idNumber=parseInt(id);
-       const json=JSON.parse(data);
-       const indexJson=json.indexOf(idNumber);
-       console.log(indexJson);
-      // json.splice((idNumber-1),1);
-       delete json[idNumber-1];
+    fs.readFile('report.json', "utf-8", (err, data) => {
+        const idNumber = parseInt(id);
+        const json = JSON.parse(data);
+        const indexJson = json.indexOf(idNumber);
+        console.log(indexJson);
+        //json.splice((idNumber - 1), 1);
+        delete json[idNumber-1];
+    
        
-       fs.writeFileSync('report.json',JSON.stringify(json),finished);
+      fs.writeFileSync('report.json',JSON.stringify(json),finished);
 
        if (!err){
         return res.json({"success":"delete successful"});

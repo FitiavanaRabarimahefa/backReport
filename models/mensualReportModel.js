@@ -4,12 +4,14 @@ const Schema = mongoose.Schema;
 
 const mensualReportSchema = new Schema({
     
-    BAAF:
-        { 
-            /* lieu:{
+    nom_rapport:{
                 type:String,
                 required:true,
-            },*/
+            },
+            region:{
+                type:String,
+                required:true,
+            },
             produit:{
                 type:String,
                 required:true
@@ -31,9 +33,5 @@ const mensualReportSchema = new Schema({
                 type:Date,
                 default:Date.now
             }
-        }
-       
-    
-
 })
 module.exports=mongoose.model('mensualReport',mensualReportSchema);

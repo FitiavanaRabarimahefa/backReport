@@ -24,7 +24,7 @@ const registration = async  (req,res) => {
               }) 
                    
               console.log(newUser);
-               res.json({'success': 'Inscription avec succès'})
+               res.json({'success':'Inscription avec succès ,un mail de confirmation vous sera dédier'})
               
           }catch(err){
                console.log(err.message);

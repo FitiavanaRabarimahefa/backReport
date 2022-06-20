@@ -23,8 +23,17 @@ io.on("connection",function(socket){
           return response;
         })
 
+     })
+         const dataMensual= fs.readFile('reportMensual.json',"utf-8",(err,data)=>{
+        const tabJson = JSON.stringify(data,null,3);
+        var jsonParse=JSON.parse(tabJson);
+        socket.emit('data2',jsonParse,(response)=>{
+          return response;
+        })
+
     })
 });
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 

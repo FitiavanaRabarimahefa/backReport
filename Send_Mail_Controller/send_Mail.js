@@ -3,7 +3,8 @@ const updateRegister=require('../models/registerModel');
 
 const sendMail=async(req,res)=>{
 
-    const {mail}=req.body;
+    const { mail } = req.body;
+    console.log(mail);
 
     const transporter=nodemailer.createTransport({
         service:"hotmail",
@@ -11,10 +12,8 @@ const sendMail=async(req,res)=>{
             user:"fitiavana.rabary@gmail.com",
             pass:"fitiavana123"
         }
-    
     });
-    
-    const option={
+     const option={
         from:"fitiavana.rabary@gmail.com",
         to:mail,
         subject:"Validation de compte ",
@@ -22,10 +21,8 @@ const sendMail=async(req,res)=>{
     }
      const validate_Send_Mail=await transporter.sendMail(option);
     if(validate_Send_Mail) {
-        
-       // console.log(validate_Send_Mail)//return res.json(validate_Send_Mail.response);
-
-    try{
+        //console.log(validate_Send_Mail)return res.json(validate_Send_Mail.response);
+        try{
         const Data_To_update= await updateRegister.findOne({"Mail":mail}).exec();
          if(Data_To_update){
              const id_Data=Data_To_update._id.toString();
@@ -34,9 +31,7 @@ const sendMail=async(req,res)=>{
              if(validate_Update) return res.json({"success":" Succes de la mise à jour "})
         };
             
-        
-
-    }catch(error){
+     }catch(error){
           console.log(error);
     }
     }

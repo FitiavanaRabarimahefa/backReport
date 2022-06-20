@@ -24,6 +24,7 @@ const login = async (req,res) => {
                  )
                 return res.json({
                      "success":"Succes de votre authentification",
+                     "validation":getUser.Validation,
                      "token":token,
                      "Region":getUser.Region
                 });

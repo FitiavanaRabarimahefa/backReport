@@ -3,7 +3,8 @@ const mensualReportModel=require("../models/mensualReportModel");
 const Save_Report= async(req,res)=>{
 
     const {
-        //lieu,
+        nom_rapport,
+        region,
         produit,
         realisation,
         valeurCible,
@@ -12,15 +13,15 @@ const Save_Report= async(req,res)=>{
 
      try{
         const newReportMensual= await mensualReportModel.create({
-            BAAF:
-                { 
-                //lieu,
+               
+                nom_rapport,
+                region,
                 produit,
                 realisation,
                 valeurCible ,
                 pourcentageRealisation,
                              
-                }
+                
                
             
         })

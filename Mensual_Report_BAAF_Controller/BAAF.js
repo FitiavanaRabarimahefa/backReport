@@ -4,6 +4,7 @@ const mensualModel=require("../models/mensualReportModel");
 const mensualReport = async (req,res) => {
     const id=0;
     const {
+        nameReport,
         region,
         mois,
         cirfinValue,
@@ -23,7 +24,8 @@ const mensualReport = async (req,res) => {
         }
         const saveData=( )=>{
 
-            var BAAF={
+            var BAAF = {
+                "name_Report":nameReport,
                 "id":id,
                 "region":region,
                 "cirfin":cirfinValue,
