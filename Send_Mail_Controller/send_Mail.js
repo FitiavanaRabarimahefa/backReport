@@ -17,7 +17,7 @@ const sendMail=async(req,res)=>{
         from:"fitiavana.rabary@gmail.com",
         to:mail,
         subject:"Validation de compte ",
-        text:'Bonjour à vous votre compte a éte valider ,vous pouvez vous connectez maintenant'
+        text:'Bonjour à vous ! Votre compte a éte validé ,vous pouvez vous connecter maintenant'
     }
      const validate_Send_Mail=await transporter.sendMail(option);
     if(validate_Send_Mail) {

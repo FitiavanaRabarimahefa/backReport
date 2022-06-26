@@ -10,13 +10,18 @@ const deleteSimpleJson = async (req, res) => {
       
     const { id } = req.body;
     
+    
       fs.readFile('reportMensual.json',"utf-8",(err,data)=>{
        const idNumber=parseInt(id);
        const json=JSON.parse(data);
-       const indexJson=json.indexOf(idNumber);
-       console.log(indexJson);
-      // json.splice((idNumber-1),1);
+         // const indexJson = json.indexOf("id"==id);
+         // console.log(indexJson)
+       // json.splice((idNumber-1),1);
        delete json[idNumber-1];
+
+         /* for (let i=idNumber+1; i <= json.length; i++){
+              json[i]=i-1;
+          }*/
        
        fs.writeFileSync('reportMensual.json',JSON.stringify(json),finished);
 

@@ -5,6 +5,7 @@ const mensualReport = async (req,res) => {
     const id=0;
     const {
         nameReport,
+        numero,
         region,
         mois,
         cirfinValue,
@@ -26,7 +27,8 @@ const mensualReport = async (req,res) => {
 
             var BAAF = {
                 "name_Report":nameReport,
-                "id":id,
+                "id": id,
+                "numero":numero,
                 "region":region,
                 "cirfin":cirfinValue,
                 "mois":mois,

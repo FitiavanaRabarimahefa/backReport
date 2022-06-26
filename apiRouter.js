@@ -13,6 +13,9 @@ var deleteInvitation = require('./Delete_invitation_controller/delete');
 var getAllDataMongo = require('./Get_All_Data_Mongo_Controller/Get_All_Data');
 var SaveMensualReport = require('./SimpleMensualReport_Controller/simple_mensual_report');
 var deleteSimpleJson = require('./Delete_Simple_Report_Controller/deleteJson');
+var modificationSimpleJson = require('./Modif_Simple_Report_Controller/modificationJson');
+var saveReportActivityMongo = require('./Save_Report_Activity_Mongo_Controller/save-Report-Activity-Mongo');
+var getAllFaitData = require('./Get_Fait_Marquant_Mongo_Controller/get_fait');
 exports.router=(function(){
     var apiRouter = express.Router();
 
@@ -29,7 +32,10 @@ exports.router=(function(){
      apiRouter.route('/deleteUser').post(deleteInvitation.deleteUser);
     apiRouter.route('/getAllData').get(getAllDataMongo.GetReportMongo);
     apiRouter.route('/saveMensualReport').post(SaveMensualReport.SaveMensualReport);
-    apiRouter.route('/deleteData').post(deleteSimpleJson.deleteSimpleJson)
+    apiRouter.route('/deleteData').post(deleteSimpleJson.deleteSimpleJson);
+    apiRouter.route('/editMensualReport').post(modificationSimpleJson.editJson);
+    apiRouter.route('/saveMongoReportActivity').post(saveReportActivityMongo.Save_Report_Activity);
+    apiRouter.route('/getFait').get(getAllFaitData.getFaitData);
 
 
     return apiRouter;

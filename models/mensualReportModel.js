@@ -4,9 +4,22 @@ const Schema = mongoose.Schema;
 
 const mensualReportSchema = new Schema({
     
-    nom_rapport:{
+            nom_rapport:{
                 type:String,
                 required:true,
+            },
+            numero: {
+                type: String,
+                required:true
+           },
+            
+           mois: {
+                type: String,
+                required:true
+            },
+            cirfinValue: {
+                type: String,
+                required:false
             },
             region:{
                 type:String,

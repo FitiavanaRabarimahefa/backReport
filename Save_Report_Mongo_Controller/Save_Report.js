@@ -4,6 +4,9 @@ const Save_Report= async(req,res)=>{
 
     const {
         nom_rapport,
+        numero,
+        mois,
+        cirfinValue,
         region,
         produit,
         realisation,
@@ -15,6 +18,9 @@ const Save_Report= async(req,res)=>{
         const newReportMensual= await mensualReportModel.create({
                
                 nom_rapport,
+                numero,
+                mois,
+                cirfinValue,
                 region,
                 produit,
                 realisation,
