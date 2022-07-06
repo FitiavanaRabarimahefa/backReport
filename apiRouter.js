@@ -16,6 +16,9 @@ var deleteSimpleJson = require('./Delete_Simple_Report_Controller/deleteJson');
 var modificationSimpleJson = require('./Modif_Simple_Report_Controller/modificationJson');
 var saveReportActivityMongo = require('./Save_Report_Activity_Mongo_Controller/save-Report-Activity-Mongo');
 var getAllFaitData = require('./Get_Fait_Marquant_Mongo_Controller/get_fait');
+var CRGPReportJson = require('./CRGP_Controller/CRGP');
+var CRGPMongo = require('./SaveCRGPMongo_controller/saveCRGP');
+
 exports.router=(function(){
     var apiRouter = express.Router();
 
@@ -36,7 +39,8 @@ exports.router=(function(){
     apiRouter.route('/editMensualReport').post(modificationSimpleJson.editJson);
     apiRouter.route('/saveMongoReportActivity').post(saveReportActivityMongo.Save_Report_Activity);
     apiRouter.route('/getFait').get(getAllFaitData.getFaitData);
-
+    apiRouter.route('/CRGPReport').post(CRGPReportJson.CRGPReport);
+    apiRouter.route('/CRGPMongo').post(CRGPMongo.saveCRGP);
 
     return apiRouter;
  })();
