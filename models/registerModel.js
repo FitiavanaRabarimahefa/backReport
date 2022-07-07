@@ -20,7 +20,7 @@ const registerSchema = new Schema({
     },
     Validation:{
         type:Boolean,
-        default:false
+        default:false,
     }
 
 })

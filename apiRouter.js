@@ -18,6 +18,7 @@ var saveReportActivityMongo = require('./Save_Report_Activity_Mongo_Controller/s
 var getAllFaitData = require('./Get_Fait_Marquant_Mongo_Controller/get_fait');
 var CRGPReportJson = require('./CRGP_Controller/CRGP');
 var CRGPMongo = require('./SaveCRGPMongo_controller/saveCRGP');
+var getCRGPMongo = require('./Get_CRGP_Mongo_Controller/getDataCrgp');
 
 exports.router=(function(){
     var apiRouter = express.Router();
@@ -41,6 +42,7 @@ exports.router=(function(){
     apiRouter.route('/getFait').get(getAllFaitData.getFaitData);
     apiRouter.route('/CRGPReport').post(CRGPReportJson.CRGPReport);
     apiRouter.route('/CRGPMongo').post(CRGPMongo.saveCRGP);
+    apiRouter.route('/getCRGPData').get(getCRGPMongo.getCRGPMongo);
 
     return apiRouter;
  })();

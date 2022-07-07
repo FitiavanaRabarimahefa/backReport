@@ -21,7 +21,7 @@ const crgpSchema = new Schema({
             },
             region:{
                 type:String,
-                required:false,
+                required:true,
             },
             lieu: {
                type: String,
