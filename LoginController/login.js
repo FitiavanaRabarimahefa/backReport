@@ -24,22 +24,16 @@ const login = async (req,res) => {
                  )
                 return res.json({
                      "success":"Succes de votre authentification",
-                     "validation":getUser.Validation,
+                     "validation": getUser.Validation,
+                     "adminStatus":getUser.AdminStatus,
                      "token":token,
                      "Region":getUser.Region
                 });
              } 
-            
         }  
-        
-
-     
-       
     }catch(error){
         console.log(error);
         return res.json({'error':'utilisateur introuvable'});
     }
-
-
 }
 module.exports={login};

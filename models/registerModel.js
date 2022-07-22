@@ -21,6 +21,10 @@ const registerSchema = new Schema({
     Validation:{
         type:Boolean,
         default:false,
+    },
+    AdminStatus: {
+        type: Boolean,
+        default:false,
     }
 
 })

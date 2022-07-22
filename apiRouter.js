@@ -19,6 +19,8 @@ var getAllFaitData = require('./Get_Fait_Marquant_Mongo_Controller/get_fait');
 var CRGPReportJson = require('./CRGP_Controller/CRGP');
 var CRGPMongo = require('./SaveCRGPMongo_controller/saveCRGP');
 var getCRGPMongo = require('./Get_CRGP_Mongo_Controller/getDataCrgp');
+var formationToJson = require('./Formation_Controller/formation_report');
+var sendMailAdmnin=require('./Send_Mail_Controller/send_Mail')
 
 exports.router=(function(){
     var apiRouter = express.Router();
@@ -43,6 +45,8 @@ exports.router=(function(){
     apiRouter.route('/CRGPReport').post(CRGPReportJson.CRGPReport);
     apiRouter.route('/CRGPMongo').post(CRGPMongo.saveCRGP);
     apiRouter.route('/getCRGPData').get(getCRGPMongo.getCRGPMongo);
+    apiRouter.route('/formationJson').post(formationToJson.formationReport);
+    apiRouter.route('/sendAdminMail').post(sendMailAdmnin.sendAdminMail);
 
     return apiRouter;
  })();
