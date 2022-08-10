@@ -2,7 +2,7 @@ const fs = require('fs');
 const formationReport = (req, res) => {
     const id = 0;
      const {
-        nameReport,
+        name_Report,
         numero,
         region,
         lieu,
@@ -31,7 +31,7 @@ const formationReport = (req, res) => {
         const saveData=( )=>{
 
             var formation= {
-                "name_Report":nameReport,
+                "name_Report":name_Report,
                 "id": id,
                 "numero":numero,
                 "region": region,

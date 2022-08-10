@@ -3,7 +3,7 @@ const fs = require('fs');
 const CRGPReport = (req, res) => {
     const id = 0;
      const {
-        nameReport,
+        name_Report,
         numero,
         region,
         lieu,
@@ -12,9 +12,7 @@ const CRGPReport = (req, res) => {
         participant,
         ordreJour,
         observation,
-        theme,
-        probleme,
-        solution
+        evaluation
     }=req.body
      try{
         
@@ -28,7 +26,7 @@ const CRGPReport = (req, res) => {
         const saveData=( )=>{
 
             var CRGP = {
-                "name_Report":nameReport,
+                "name_Report":name_Report,
                 "id": id,
                 "numero":numero,
                 "region": region,
@@ -38,9 +36,7 @@ const CRGPReport = (req, res) => {
                 "participant":participant,
                 "ordreJour":ordreJour,
                 "observation":observation,
-                "theme": theme,
-                "probleme": probleme,
-                "solution":solution
+                "evaluation":evaluation,
            }
             
             fs.readFile('CRGP.json',"utf-8",(err,data)=>{

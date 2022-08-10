@@ -30,7 +30,20 @@ io.on("connection",function(socket){
         socket.emit('data2',jsonParse,(response)=>{
           return response;
         })
-
+     })
+       const dataCRGP= fs.readFile('CRGP.json',"utf-8",(err,data)=>{
+        const tabJson = JSON.stringify(data,null,3);
+        var jsonParse=JSON.parse(tabJson);
+        socket.emit('data3',jsonParse,(response)=>{
+          return response;
+        })
+       })
+       const dataFormation= fs.readFile('formation.json',"utf-8",(err,data)=>{
+        const tabJson = JSON.stringify(data,null,3);
+        var jsonParse=JSON.parse(tabJson);
+        socket.emit('data4',jsonParse,(response)=>{
+          return response;
+        })
     })
 });
 

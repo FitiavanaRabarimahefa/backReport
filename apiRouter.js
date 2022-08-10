@@ -20,7 +20,8 @@ var CRGPReportJson = require('./CRGP_Controller/CRGP');
 var CRGPMongo = require('./SaveCRGPMongo_controller/saveCRGP');
 var getCRGPMongo = require('./Get_CRGP_Mongo_Controller/getDataCrgp');
 var formationToJson = require('./Formation_Controller/formation_report');
-var sendMailAdmnin=require('./Send_Mail_Controller/send_Mail')
+var sendMailAdmnin = require('./Send_Mail_Controller/send_Mail');
+var deleteCRGPJson = require('./Delete_CRGP_Json_Controller/delete_CRGP');
 
 exports.router=(function(){
     var apiRouter = express.Router();
@@ -47,6 +48,7 @@ exports.router=(function(){
     apiRouter.route('/getCRGPData').get(getCRGPMongo.getCRGPMongo);
     apiRouter.route('/formationJson').post(formationToJson.formationReport);
     apiRouter.route('/sendAdminMail').post(sendMailAdmnin.sendAdminMail);
+    apiRouter.route('/delete-CRGP').post(deleteCRGPJson.deleteCRGPJson);
 
     return apiRouter;
  })();
