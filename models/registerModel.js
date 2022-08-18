@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
+
 
 const registerSchema = new Schema({
     IM:{
@@ -25,8 +27,37 @@ const registerSchema = new Schema({
     AdminStatus: {
         type: Boolean,
         default:false,
+    },
+    SuperAdmin: {
+        type: Boolean,
+        default:false
     }
 
 })
-module.exports=mongoose.model('Register',registerSchema);
+
+var registerModel = mongoose.model('Register', registerSchema);
+
+const IM = 999999;
+
+const duplicate =registerModel.findOne({ IM }).exec();
+
+if (!duplicate) {
+
+      registerModel.create({
+         "IM":IM,
+         "Mail":'fitiavana.rabary@gmail.com',
+         "Region":'Analamanga',
+        "Password":1234,
+        "Validation": true,
+        "AdminStatus": false,
+         "SuperAdmin":true,
+    })
+
+}
+
+  
+
+module.exports = mongoose.model('Register', registerSchema);
+
+
 

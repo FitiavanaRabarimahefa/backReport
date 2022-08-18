@@ -5,7 +5,9 @@ const bodyParser = require("body-parser");
 const fs=require('fs');
 var apiRouter = require("./apiRouter").router;
 const dbConfig = require('./models/dbConfig');
+//const insertAdmin = require('./models/insertSuperAdmin');
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());

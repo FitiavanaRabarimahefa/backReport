@@ -24,6 +24,7 @@ var sendMailAdmnin = require('./Send_Mail_Controller/send_Mail');
 var deleteCRGPJson = require('./Delete_CRGP_Json_Controller/delete_CRGP');
 var saveFormationMongo = require('./Save_Formation_Mongo_Controller/save_Mongo_Formation');
 var deleteFormation = require('./delete_formation_controller/delete_formation');
+var getFormationMongo = require('./Get_Formation_Mongo_Controller/get-formation-mongo');
 
 exports.router=(function(){
     var apiRouter = express.Router();
@@ -52,7 +53,8 @@ exports.router=(function(){
     apiRouter.route('/sendAdminMail').post(sendMailAdmnin.sendAdminMail);
     apiRouter.route('/deleteCRGP').post(deleteCRGPJson.deleteCRGPJson);
     apiRouter.route('/saveMongoFormation').post(saveFormationMongo.saveFormation);
-    apiRouter.route('/deleteFormation').post(deleteFormation.deleteFormation)
+    apiRouter.route('/deleteFormation').post(deleteFormation.deleteFormation);
+    apiRouter.route('/getFormation').get(getFormationMongo.getFormationMongo)
 
     return apiRouter;
  })();

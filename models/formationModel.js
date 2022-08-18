@@ -58,6 +58,10 @@ const formationSchema = new Schema({
             observation: {
                type: String,
                required:true,
+            },
+             date:{
+                type:Date,
+                default:Date.now
             }
 });
 module.exports=mongoose.model('formation',formationSchema)
