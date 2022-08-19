@@ -31,11 +31,11 @@ const mensualReportSchema = new Schema({
             },
              realisation:{
                 type:String,
-                required:true
+                required:false
             },
             valeurCible:{
                 type:String,
-                required:true
+                required:false
             },
 
             pourcentageRealisation:{
