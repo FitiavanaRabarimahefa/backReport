@@ -25,6 +25,9 @@ var deleteCRGPJson = require('./Delete_CRGP_Json_Controller/delete_CRGP');
 var saveFormationMongo = require('./Save_Formation_Mongo_Controller/save_Mongo_Formation');
 var deleteFormation = require('./delete_formation_controller/delete_formation');
 var getFormationMongo = require('./Get_Formation_Mongo_Controller/get-formation-mongo');
+var getAllRegister = require('./Get_All_Register_Controller/getAllRegister');
+var getSearchReport = require('./Search_Report_Controller/searchReport');
+//var deleteTest = require('./TesteVaovaoDelete/delete');
 
 exports.router=(function(){
     var apiRouter = express.Router();
@@ -54,7 +57,10 @@ exports.router=(function(){
     apiRouter.route('/deleteCRGP').post(deleteCRGPJson.deleteCRGPJson);
     apiRouter.route('/saveMongoFormation').post(saveFormationMongo.saveFormation);
     apiRouter.route('/deleteFormation').post(deleteFormation.deleteFormation);
-    apiRouter.route('/getFormation').get(getFormationMongo.getFormationMongo)
+    apiRouter.route('/getFormation').get(getFormationMongo.getFormationMongo);
+    apiRouter.route('/getAllRegister').get(getAllRegister.getAllRegister);
+    apiRouter.route('/getSearch').post(getSearchReport.searchReport);
+   // apiRouter.route('/testDel').post(deleteTest.deleteJson);
 
     return apiRouter;
  })();

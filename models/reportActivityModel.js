@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema
-
+const years = new Date(Date.now()).getFullYear();
 const reportActivitySchema = new Schema({
     
             nom_rapport:{
@@ -35,6 +35,10 @@ const reportActivitySchema = new Schema({
              date:{
                 type:Date,
                 default:Date.now
+            },
+              indice: {
+                type: Number,
+                default:years
             }
 })
 module.exports=mongoose.model('reportActivity',reportActivitySchema)

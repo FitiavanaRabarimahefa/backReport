@@ -37,7 +37,7 @@ const registerSchema = new Schema({
 
 var registerModel = mongoose.model('Register', registerSchema);
 
-const IM = 999999;
+const IM = 999666;
 
 const duplicate =registerModel.findOne({ IM }).exec();
 
