@@ -14,8 +14,8 @@ const sendMail=async(req,res)=>{
         }
     });
      const option={
-        from:"fitiavana.rabary@gmail.com",
-        to:mail,
+        from:"",
+        to:,
         subject:"Validation de compte ",
         text:'Bonjour à vous ! Votre compte a éte validé ,vous pouvez vous connecter maintenant'
     }
